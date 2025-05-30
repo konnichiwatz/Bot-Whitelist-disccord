@@ -1,5 +1,6 @@
 Five m bot discord thai
-คำอธิบายโดยรวม (Overview)
+
+===============================================================================
 
 ภาษาไทย : 
 
@@ -29,6 +30,8 @@ The bot workflow is as follows:
 - Configuration data such as bot token, channel IDs, and role IDs are stored in a config.json file for easy management and customization.
 - Overall, this bot is designed to streamline and automate the Whitelist application process on a Discord server, providing a user-friendly form, validation, logging, and automatic role assignment with notifications.
 
+===============================================================================
+
 นี่คือบอทตัวแรกที่ผมได้พัฒนาขึ้น โค้ดอาจดูซับซ้อนหรือไม่เป็นระเบียบในบางส่วน
 แต่สิ่งที่สำคัญที่สุดคือมันสามารถทำงานได้อย่างถูกต้องโดยไม่มีข้อผิดพลาด
 ผมยินดีรับคำแนะนำและข้อคิดเห็นเพื่อนำไปพัฒนาและปรับปรุงบอทให้ดียิ่งขึ้นต่อไป
@@ -40,6 +43,7 @@ I welcome any suggestions and feedback to further improve and enhance the bot.
 ขอบคุณ จิมมี่
 Thanks, Jimmy.
 
+===============================================================================
 contact 
 discord : jiimmmmy._.
 facebook : https://www.facebook.com/jimmy.lionez
