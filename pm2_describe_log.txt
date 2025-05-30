@@ -1,0 +1,31 @@
+ Describing process with id 0 - name discord-bot 
+┌───────────────────┬────────────────────────────────────────────────────┐
+│ status            │ stopped                                            │
+│ name              │ discord-bot                                        │
+│ namespace         │ default                                            │
+│ version           │ N/A                                                │
+│ restarts          │ 16                                                 │
+│ uptime            │ 0                                                  │
+│ script path       │ C:\Users\JJJJJMMMY\Desktop\Bot Discord\index.js    │
+│ script args       │ N/A                                                │
+│ error log path    │ C:\Users\JJJJJMMMY\.pm2\logs\discord-bot-error.log │
+│ out log path      │ C:\Users\JJJJJMMMY\.pm2\logs\discord-bot-out.log   │
+│ pid path          │ C:\Users\JJJJJMMMY\.pm2\pids\discord-bot-0.pid     │
+│ interpreter       │ node                                               │
+│ interpreter args  │ N/A                                                │
+│ script id         │ 0                                                  │
+│ exec cwd          │ C:\Users\JJJJJMMMY\Desktop\Bot Discord             │
+│ exec mode         │ fork_mode                                          │
+│ node.js version   │ 22.16.0                                            │
+│ node env          │ N/A                                                │
+│ watch & reload    │ ✘                                                  │
+│ unstable restarts │ 0                                                  │
+│ created at        │ 2025-05-29T07:45:13.617Z                           │
+└───────────────────┴────────────────────────────────────────────────────┘
+ Divergent env variables from local env 
+
+
+ Add your own code metrics: http://bit.ly/code-metrics
+ Use `pm2 logs discord-bot [--lines 1000]` to display logs
+ Use `pm2 env 0` to display environment variables
+ Use `pm2 monit` to monitor CPU and Memory usage discord-bot

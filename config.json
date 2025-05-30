@@ -1,0 +1,23 @@
+{
+  "token": "TOKEN BOT DISCORD",
+  "clientId": "xxxxxx",
+  "guildId": "xxxxx",
+
+  "channels": {
+    "mainFormChannelId": "ID Channel Form Whitelist discord",
+    "whitelistReportChannelId": "ID Channel Report admin",
+    "whitelistNotifyChannelId": "ID Channel Noti"
+  },
+
+  "roles": {
+    "whitelistRoleId": "Whitelist role id",
+    "adminTags": [
+      "ID ADMIN ROLE DISCORD",
+      "ID ADMIN ROLE DISCORD",
+      "ID ADMIN ROLE DISCORD",
+      "ID ADMIN ROLE DISCORD"
+    ],
+
+    "autoRoleIds": ["Whitelist role id"]
+  }
+}
