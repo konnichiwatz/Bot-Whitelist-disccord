@@ -30,32 +30,19 @@ const logger = new Logger(client, config.channelId)
 client.once(Events.ClientReady, async () => {
   console.log(chalk.red("บอทกำลังรัน โปรดรอสักครู่"))
   console.log(chalk.red("The bot is running, please wait a moment."))
-  await new Promise((resolve) => setTimeout(resolve, 1000)) // รอ 1 วิ
   console.log(chalk.black("."))
-  await new Promise((resolve) => setTimeout(resolve, 1000)) // รอ 1 วิ
-  console.log(chalk.black("."))
-  await new Promise((resolve) => setTimeout(resolve, 1000)) // รอ 1 วิ
-  console.log(chalk.black("."))
-  await new Promise((resolve) => setTimeout(resolve, 3000)) // รอ 3 วิ
   console.log(chalk.bold.blue("======================================"))
   console.log(`✅ Login สำเร็จ ในชื่อ ${client.user.tag}✅`)
   console.log("✅ Bot is now ready and operational. ")
   console.log(chalk.bold.blue("======================================"))
-  await new Promise((resolve) => setTimeout(resolve, 3000)) // รอ 3 วิ
   console.log(chalk.bold.blue("======================================"))
   console.log("[Bot จัดทำขึ้นโดย Jimmy Lionez]")
   console.log("[สามารถแก้ไข Bot ได้ตามปกติ ห้ามซื้อ-ขายต่อเด็ดขาด!!]")
   console.log(chalk.bold.blue("======================================"))
-  await new Promise((resolve) => setTimeout(resolve, 1000)) // รอ 1 วิ
-  console.log(chalk.black("."))
-  await new Promise((resolve) => setTimeout(resolve, 1000)) // รอ 1 วิ
-  console.log(chalk.black("."))
-  await new Promise((resolve) => setTimeout(resolve, 1000)) // รอ 1 วิ
   console.log(chalk.black("."))
   console.log(chalk.red("หากปิด Console นี้ บอทจะไม่สามารถใช้งานได้"))
   console.log(chalk.red("ห้ามปิด Console นี้ โดยเด็ดขาด!"))
   console.log(chalk.bold("Start up!!"))
-  await new Promise((resolve) => setTimeout(resolve, 5000)) // รอ 5 วิ
 
   const channel = await client.channels.fetch(config.channels.mainFormChannelId)
 
@@ -218,11 +205,14 @@ client.on(Events.InteractionCreate, async (interaction) => {
     // ...
   }
   // Jimmy Lionez
+  function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms))
+  }
+
   if (
     interaction.isModalSubmit() &&
     interaction.customId === "whitelistModal"
   ) {
-    await new Promise((resolve) => setTimeout(resolve, 5000)) // รอ 5 วิ
     const ign = interaction.fields.getTextInputValue("ign")
     const age = interaction.fields.getTextInputValue("age")
     const gender = interaction.fields.getTextInputValue("gender")
@@ -266,8 +256,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
       config.channels.whitelistReportChannelId
     )
 
+    await interaction.deferReply({ flags: MessageFlags.Ephemeral })
+
     await reportChannel.send({
-      content: `<@&1376078290749493330> <@&1376080473507500084> <@&1376080063337992213> <@&1376078745693061130>`, // ใส่ role ID ที่ต้องการ mention
+      content: (config.roles.adminTags || [])
+        .map((roleId) => `<@&${roleId}>`)
+        .join(" "),
       embeds: [embed],
     })
 
@@ -277,29 +271,25 @@ client.on(Events.InteractionCreate, async (interaction) => {
     const member = await interaction.guild.members.fetch(interaction.user.id)
     console.log("Member fetched:", member.user.tag)
 
-    await new Promise((resolve) => setTimeout(resolve, 5000)) // รอ 5 วิ
-
     await member.roles.add(config.roles.whitelistRoleId)
     console.log("Role added successfully")
+
+    await delay(3000) // หน่วง 3 วินาที
 
     // แจ้งเตือนในช่อง reportChannel ว่า user ได้รับ Role แล้ว
     const notifyChannel = await client.channels.fetch(
       config.channels.whitelistNotifyChannelId
     )
-    await new Promise((resolve) => setTimeout(resolve, 10000)) // รอ 10 วิ
+
     await notifyChannel.send(
       `<@${interaction.user.id}>
-      \`\`\`คุณได้รับ Whitelist เรียบร้อยแล้ว 🎉\`\`\`
-      \`\`\`You have successfully received the Whitelist 🎉\`\`\``
+    \`\`\`คุณได้รับ Whitelist เรียบร้อยแล้ว 🎉\`\`\`
+    \`\`\`You have successfully received the Whitelist 🎉\`\`\``
     )
 
-    // ให้ Role (ถ้ามี)
-    if (config.roles.whitelistRoleId) {
-      const member = await interaction.guild.members.fetch(interaction.user.id)
-      await member.roles.add(config.roles.whitelistRoleId)
-    }
+    // ไม่ต้องให้ Role ซ้ำอีก เพราะให้ไปแล้วข้างบน
 
-    await interaction.reply({
+    await interaction.editReply({
       content:
         "```\n ✅ ส่งแบบฟอร์มเรียบร้อยแล้ว ขอบคุณ! \n```  ```\n ✅Your form has been submitted successfully. Thank you! \n``` ",
       flags: MessageFlags.Ephemeral,
