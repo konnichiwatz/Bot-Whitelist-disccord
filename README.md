@@ -44,6 +44,9 @@ I welcome any suggestions and feedback to further improve and enhance the bot.
 Thanks, Jimmy.
 
 ===============================================================================
+
 contact 
+
 discord : jiimmmmy._.
+
 facebook : https://www.facebook.com/jimmy.lionez
