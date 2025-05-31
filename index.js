@@ -19,6 +19,7 @@ const Logger = require("./utils/logger")
 const FormLogger = require("./formLogger")
 const formLogger = new FormLogger()
 const chalk = require("chalk").default
+chalk.level = 3
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
@@ -29,20 +30,35 @@ const logger = new Logger(client, config.channelId)
 
 client.once(Events.ClientReady, async () => {
   console.log(chalk.red("บอทกำลังรัน โปรดรอสักครู่"))
+  process.stdout.write("")
   console.log(chalk.red("The bot is running, please wait a moment."))
+  process.stdout.write("")
   console.log(chalk.black("."))
+  process.stdout.write("")
   console.log(chalk.bold.blue("======================================"))
+  process.stdout.write("")
   console.log(`✅ Login สำเร็จ ในชื่อ ${client.user.tag}✅`)
+  process.stdout.write("")
   console.log("✅ Bot is now ready and operational. ")
+  process.stdout.write("")
   console.log(chalk.bold.blue("======================================"))
+  process.stdout.write("")
   console.log(chalk.bold.blue("======================================"))
+  process.stdout.write("")
   console.log("[Bot จัดทำขึ้นโดย Jimmy Lionez]")
+  process.stdout.write("")
   console.log("[สามารถแก้ไข Bot ได้ตามปกติ ห้ามซื้อ-ขายต่อเด็ดขาด!!]")
+  process.stdout.write("")
   console.log(chalk.bold.blue("======================================"))
+  process.stdout.write("")
   console.log(chalk.black("."))
+  process.stdout.write("")
   console.log(chalk.red("หากปิด Console นี้ บอทจะไม่สามารถใช้งานได้"))
+  process.stdout.write("")
   console.log(chalk.red("ห้ามปิด Console นี้ โดยเด็ดขาด!"))
+  process.stdout.write("")
   console.log(chalk.bold("Start up!!"))
+  process.stdout.write("")
 
   const channel = await client.channels.fetch(config.channels.mainFormChannelId)
 
